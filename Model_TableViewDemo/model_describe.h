@@ -12,7 +12,7 @@ public:
     int  rowCount(const QModelIndex &parent)const;// the count of Row
     int columnCount(const QModelIndex &parent) const;// the count of Coluwn
     QVariant    data(const QModelIndex &index, int role) const;
-    QVariant headerData(int section,int role, Qt::Orientation orientation) const;//
+    QVariant headerData(int section, Qt::Orientation orientation,int role) const;//  the order of argument donot change ,if change ,it is  another one
 private:
     QStringList  m_data;
     QStringList  m_headData;

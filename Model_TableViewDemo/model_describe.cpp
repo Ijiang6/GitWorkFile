@@ -3,7 +3,8 @@
 Model_Describe::Model_Describe()
 {
     QString  str="A<B<C<D<E";
-    m_headData=str.split('<');
+//    m_headData=str.split('<');
+    m_headData<<"A"<<"B"<<"C"<<"D"<<"E";
     }
 int Model_Describe::rowCount(const QModelIndex &parent) const
 {
@@ -49,15 +50,12 @@ QVariant Model_Describe::data(const QModelIndex &index, int role) const
     }
      return QVariant();
 }
-QVariant Model_Describe::headerData(int section,int role, Qt::Orientation orientation) const//
+QVariant Model_Describe::headerData(int section, Qt::Orientation orientation,int role) const//
 {
-        if(role==Qt::DisplayRole&&orientation==Qt::Horizontal)
-          {
-
-            qDebug()<<"ID"<<section<<"value"<<m_headData.at(section);
-
+        if(role==Qt::DisplayRole && orientation==Qt::Horizontal)
+                    //qDebug()<<"ID"<<section<<"value"<<m_headData.at(section);
          return  m_headData[section];
-        }
+
            return QAbstractTableModel::headerData(section,orientation,role);
 }
 void Model_Describe::setModelData(const QVector<QStringList> &strvec_Datas){
